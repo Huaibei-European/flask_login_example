@@ -29,3 +29,38 @@ FLASK_APP=app.py
 ```
 flask run
 ```
+
+</br>
+</br>
+</br>
+
+This is a code that uses flash to realize simple login. 
+
+Different types of login methods can be realized through different types of code formats. 
+
+It is recommended to start reading from app -- appx, so as to have an in-depth understanding of how flash works.
+
+This code does not use the database operation.
+
+Through the way of file reading and writing to realize the way of recording user information.
+
+#### Installation dependency
+```
+pip install flask
+pip install python-dotenv
+```
+
+#### Configure startup file
+`.flaskenv`
+
+```
+FLASK_ ENV=development
+FLASK_ RUN_ PORT = 5000
+FLASK_ RUN_ HOST = 127.0.0.1
+FLASK_ APP=app.py
+```
+
+#### Start the program
+```
+flask run
+```
