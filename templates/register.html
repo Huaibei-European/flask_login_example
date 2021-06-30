@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<form action="/_register_write_in" method="post">
+    <div>
+        <div class="form-label">用户名</div>
+        <label>
+            <input type="text" name="username" id="username">
+        </label>
+    </div>
+    <div>
+        <div class="form-label">密码</div>
+        <label>
+            <input type="password" name="password" id="password">
+        </label>
+    </div>
+    <button>注册</button>
+</form>
+</body>
+<style>
+    .form-label {
+        display: inline-block;
+    }
+</style>
+<script>
+  //阻止默认时间提价奥，手动检测用户名密码提交
+  $("button").click(
+      function (event) {
+        event.preventDefault();
+        let username = $('#username').val();
+        let password = $('#password').val();
+        if (username && password) {
+          $.ajax(
+              {
+                url: '/_register_write_in',
+                data: {
+                  username: username,
+                  password: password,
+                },
+                type: 'post',
+                success: function (res) {
+                  if (res === 'success') {
+                    console.log(1)
+                    window.location = '/'
+                  }
+                },
+                error: function (res) {
+                  alert('网络连接失败！', res)
+                }
+              }
+          )
+        } else {
+          alert('用户名或密码不能为空！')
+        }
+
+      },
+  )
+  ;
+</script>
+</html>

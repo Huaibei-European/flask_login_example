@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>后台管理界面</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+  <script src="../static/js/bootstrap.bundle.js"></script>
+  <script src="../static/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>欢迎来到后台管理系统</h1>
+<div class="table-display">
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th scope="col">用户名/密码/相关操作</th>
+        <th scope="col">用户名</th>
+        <th scope="col">密码</th>
+        <th scope="col">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for info in infos %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td class="show-username">{{ info[0] }}</td>
+        <td class="show-password">{{ info[1] }}</td>
+        <td>
+{#          <button>修改用户名</button>#}
+          <button>修改密码</button>
+          <label class="modify-password">
+            <input type="text" class="exists-password">
+            <button class="ensure-password">确认</button>
+          </label>
+        </td>
+      </tr>
+    {% endfor %}
+    {#
+[['mingzhuo', '123456'], ['nihao', '654321'], ['111', '111'], ['111', ''], ['111', ''], ['闫明卓', '123456'], ['闫明卓', '1234567']]
+#}
+    </tbody>
+  </table>
+</div>
+</body>
+<script>
+{#点击修改密码的逻辑#}
+$('button').click(
+    function () {
+      $('.modify-password').css('display', 'none');
+      $(this).siblings('.modify-password').css('display', 'inline-block')
+    }
+)
+{#点击确认修改密码的逻辑#}
+$('.ensure-password').click(
+    function () {
+      //获取修改用户名
+      let username = $(this).parent().parent().parent().children('td.show-username').text();
+      //获取修改密码
+      let password = $(this).siblings('.exists-password').val();
+      $.ajax(
+          {
+            url: '/modify_password',
+            data: {
+              username: username,
+              password: password,
+            },
+            type: 'post',
+            success: function (res) {
+              if (res === 'success') {
+                alert('修改密码成功！')
+                window.location.reload();
+              }
+            },
+            error: function (res) {
+
+            }
+          }
+      )
+    }
+)
+</script>
+<style>
+    h1 {
+        text-align: center;
+        font-family: "微软雅黑 Light", Serif, serif;
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    .table-display {
+        margin: 20px;
+    }
+
+    .modify-password {
+        display: none;
+    }
+</style>
+</html>
