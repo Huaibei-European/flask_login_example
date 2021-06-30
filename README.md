@@ -6,6 +6,8 @@
 
 通过文件读写的方式实现记录用户信息的方式。
 
+请在虚拟环境下创建。如何创建虚拟环境？请看https://github.com/Huaibei-European/python_create_virtual_environment。
+
 #### 安装依赖
 
 ```
@@ -43,6 +45,8 @@ It is recommended to start reading from app -- appx, so as to have an in-depth u
 This code does not use the database operation.
 
 Through the way of file reading and writing to realize the way of recording user information.
+
+Please create it in a virtual environment. How to create a virtual environment? Look https://github.com/Huaibei-European/python_ create_ virtual_ environment。
 
 #### Installation dependency
 ```
