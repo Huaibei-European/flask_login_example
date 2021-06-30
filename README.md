@@ -6,6 +6,13 @@
 
 通过文件读写的方式实现记录用户信息的方式。
 
+#### 安装依赖
+
+```
+pip install flask
+pip install python-dotenv
+```
+
 #### 配置启动文件
 
 `.flaskenv`
